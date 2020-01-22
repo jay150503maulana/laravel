@@ -11,7 +11,7 @@
 |
 */
 
-Route::get('/jay', function () {
+Route::get('/', function () {
     return view('welcome');
 });
 
@@ -59,4 +59,91 @@ Route::get('biodata/{nama}/{alamat}/{sekolah}/{umur}',function($a,$b,$c,$d){
             '<br>alamat :'.$b.
             '<br>sekolah : '.$c.
             '<br>Umur : '.$d;
+});
+
+Route::get('name/{param?}',function($a= "kenedy"){
+    return 'your name is '.$a;
+});
+
+Route::get('pesan/{batagor?}/{kopi?}/{denganharga?}',function($a= null,$b= null,$c=null){
+    if(!$a && !$b){
+    return 'Silahkan pesan terlebih dahulu';
+    }
+    if(!isset($b)   ){
+        return 'Anda Pesan '.$a;
+    }
+    if(!isset($c)){
+        return 'Anda pesan '.$a.' dan '.$b;
+    }
+    if(isset($c)){
+        if($c > 35000){
+            $size='Large';
+        }
+        elseif($c > 25000){
+            $size='medium';
+        }
+        elseif($c >=0){
+            $size='small';
+        }
+        else{
+            $size='Harga Tidak valid';
+        }
+        echo'Anda pesan '.$a.' dan '.$b.' Dengan Harga '.$c.' size Minuman Anda '.$size;
+    }
+});
+//buat satu optional dengan 2 param
+//url ->test-tni/{nama}/{bb}/{umur}
+//jika tidak diisi paramater->silahkan isi terlebih dahulu
+// nama -> nama anda XXX
+//  bb -> > 76-100 kg-> anda harus turun badan
+//        > 65 - 75 kg -> berat badan anda ideal
+//        > 50 - 64 kg -> naikan berat badan anda
+//        < 50 -> anda kurang nutrisi
+
+//  umur ->30 - 40 -> perwira
+//       -> 40 - 50 -> Laksamana
+//       -> 50- 60 -> jendral
+
+Route::get('tni/{nama?}/{bb?}/{umur?}',function($a= null,$b= null,$c=null){
+    if(!$a && !$b){
+    return 'Silahkan isi data terlebih dahulu';
+    }
+    if(isset($a)   ){
+        echo 'Nama Anda  '.$a;
+    }
+    if(isset($b)){
+        if($b >=76 && $b <= 100){
+            $bb='anda harus turun berat badan';
+        }
+        elseif($b >= 65 && $b < 76){
+            $bb='berat badan anda ideal';
+        }
+        elseif($b >= 50 && $b < 65){
+            $bb='Naikan berat badan anda';
+        }
+        elseif($b < 50){
+            $bb='Anda kurang nutrisi';
+        }
+        else{
+            $bb='berat badan tidak valid';
+        }
+        echo ', berat badan anda ' .$b. ' Kg dan '.$bb;
+    }
+
+
+        if(isset($c)){
+            if($c > 50 && $c <= 60){
+                $pangkat='jendral';
+            }
+            elseif($c >= 40 && $c < 50){
+                $pangkat='Laksamana';
+            }
+            elseif($c >= 30 && $c < 40){
+                $pangkat='perwira';
+            }
+            else{
+                $pangkat='umur tidak valid';
+            }
+            echo'<br>umur anda '.$c.' tahun dan pangkat anda '.$pangkat;
+        }
 });
