@@ -168,7 +168,7 @@ Route::get('testmodel2',function()
 //akses model untuk mengubah record ,(menghapus semua isi function)
 Route::get('testmodel3',function()
 {
-    $post = App\Post::find(1);
+    $post = App\post::find(1);
     $post->title = "Ciri Keluarga Sakinah";
     $post->save();
     return $post;
@@ -176,13 +176,13 @@ Route::get('testmodel3',function()
 //akses model untuk menghapus record ,(menghapus semua isi function)
 Route::get('testmodel4',function()
 {
-    $post = App\Post::find(1);
+    $post = App\post::find(1);
     $post->delete();
 });
 //akses model untuk menambahkan record ,(menghapus semua isi function)
 Route::get('testmodel5',function()
 {
-    $post = new App\Post;
+    $post = new App\post;
 $post->title = "7 Amalan Pembuka Jodoh";
 $post->content = "shalat malam, sedekah, puasa sunah, silaturahmi, senyum, doa, tobat";
 $post->save();
