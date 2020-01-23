@@ -147,3 +147,45 @@ Route::get('tni/{nama?}/{bb?}/{umur?}',function($a= null,$b= null,$c=null){
             echo'<br>umur anda '.$c.' tahun dan pangkat anda '.$pangkat;
         }
 });
+//akses model
+Route::get('testmodel',function()
+{
+    $query = App\post::all();
+    return $query;
+});
+//akses model untuk mencari berdasarkan id
+Route::get('testmodel1',function()
+{
+    $query = App\post::find(1);
+    return $query;
+});
+// akses model untuk mencari berdsarkan tittle
+Route::get('testmodel2',function()
+{
+    $query = App\post::where('title','like','%cepat nikah%')->get();
+    return $query;
+});
+//akses model untuk mengubah record ,(menghapus semua isi function)
+Route::get('testmodel3',function()
+{
+    $post = App\Post::find(1);
+    $post->title = "Ciri Keluarga Sakinah";
+    $post->save();
+    return $post;
+});
+//akses model untuk menghapus record ,(menghapus semua isi function)
+Route::get('testmodel4',function()
+{
+    $post = App\Post::find(1);
+    $post->delete();
+});
+//akses model untuk menambahkan record ,(menghapus semua isi function)
+Route::get('testmodel5',function()
+{
+    $post = new App\Post;
+$post->title = "7 Amalan Pembuka Jodoh";
+$post->content = "shalat malam, sedekah, puasa sunah, silaturahmi, senyum, doa, tobat";
+$post->save();
+return $post;
+// check record baru di database
+});
