@@ -189,3 +189,30 @@ $post->save();
 return $post;
 // check record baru di database
 });
+//akses model biodata
+Route::get('model/bio',function()
+{
+    $query = App\Data::all()->take(3);
+    return $query;
+});
+//akses melihat 1 record 3 field
+Route::get('lihat-bio/select',function()
+{
+    $query= App\Data::select('nama','alamat','hobi')->first();
+    return $query;
+});
+
+//akses menambahkan record
+Route::get('tambah-data/tambah/{nis}/{nama}/{tanggal_lahir}/{alamat}/{sekolah}/{hobi}/{umur}',
+        function($nis,$nama,$tanggal_lahir,$alamat,$sekolah,$hobi,$umur){
+            $post = new App\Data;
+            $post->nis=$nis;
+            $post->nama=$nama;
+            $post->tanggal_lahir=$tanggal_lahir;
+            $post->alamat=$alamat;
+            $post->sekolah=$sekolah;
+            $post->hobi=$hobi;
+            $post->umur=$umur;
+            $post->save();
+            return $post;
+        });
