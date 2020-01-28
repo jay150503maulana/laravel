@@ -216,3 +216,10 @@ Route::get('tambah-data/tambah/{nis}/{nama}/{tanggal_lahir}/{alamat}/{sekolah}/{
             $post->save();
             return $post;
         });
+Route::get('latihan','LatihanController@halo');
+Route::get('tambah/{a?}/{h?}','LatihanController@pertambahan');
+Route::get('kurang/{b?}/{g?}','LatihanController@pengurangan');
+Route::get('bagi/{c?}/{f?}','LatihanController@pembagian');
+Route::get('kali/{d?}/{e?}','LatihanController@perkalian');
+Route::get('/data-1','LatihanController@loop');
+Route::get('/data-2','LatihanController@loop2');
