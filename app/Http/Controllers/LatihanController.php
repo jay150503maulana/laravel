@@ -98,29 +98,54 @@ class LatihanController extends Controller
     }
     public function loop2(){
         $data =[
-            ['Nama'=>'Hari','Agama'=>'Islam','Alamat'=>'Bandung','Jenis_kelamin'=>'Laki-laki','Jabatan'=>'Manager','Jam_kerja'=>5],
-            ['Nama'=>'Putri','Agama'=>'Islam','Alamat'=>'Jakarta','Jenis_kelamin'=>'Perempuan','Jabatan'=>'staff','Jam_kerja'=>6],
-            ['Nama'=>'Jay','Agama'=>'Islam','Alamat'=>'Bandung,Jawa Barat','Jenis_kelamin'=>'Laki-laki','Jabatan'=>'Sekretaris','Jam_kerja'=>7]
+            ['Nama'=>'Hari','Agama'=>'Islam','Alamat'=>'Bandung','Jenis_kelamin'=>'Laki-laki','Jabatan'=>'Manager','Jam_kerja'=>300],
+            ['Nama'=>'Putri','Agama'=>'Islam','Alamat'=>'Jakarta','Jenis_kelamin'=>'Perempuan','Jabatan'=>'staff','Jam_kerja'=>260],
+            ['Nama'=>'Jay','Agama'=>'Islam','Alamat'=>'Bandung,Jawa Barat','Jenis_kelamin'=>'Laki-laki','Jabatan'=>'Sekretaris','Jam_kerja'=>200]
         ];
         foreach($data as $jay => $key){
 
             if($key['Jabatan']== 'Manager'){
                 $gaji=5000000;
                 if($key['Jam_kerja']>=250){
-                    $bonus =$key['Jam_kerja']*10/100;
-                }else{
+                    $bonus =$gaji*10/100;
+                }elseif($key['Jam_kerja']>=200){
+                    $bonus =$gaji*5/100;
+                }
+                else{
                     $bonus=0;
                 }
-                $tabungan = "25%";
-
-                $sisa = $key['jajan'] - $tabung;
-           }
+            }elseif($key['Jabatan']== 'Sekretaris'){
+                $gaji=3500000;
+                if($key['Jam_kerja']>=250){
+                    $bonus =$gaji*10/100;
+                }elseif($key['Jam_kerja']>=200){
+                    $bonus =$gaji*5/100;
+                }
+                else{
+                    $bonus=0;
+                }
+            }elseif($key['Jabatan']== 'staff'){
+                $gaji=2500000;
+                if($key['Jam_kerja']>=250){
+                    $bonus =$gaji*10/100;
+                }elseif($key['Jam_kerja']>=200){
+                    $bonus =$gaji*5/100;
+                }
+                else{
+                    $bonus=0;
+                }
+            }
+           $gajibersih=$gaji+$bonus;
+                $potongan=$gajibersih*2.5/100;
+                $total=$gajibersih-$potongan;
             echo 'Nama : ' .$key['Nama'].'<br>'.
                  ' Agama : ' .$key['Agama'].'<br>'.
                  ' Alamat : ' .$key['Alamat'].'<br>'.
                  ' Jenis kelamin : '.$key['Jenis_kelamin'].'<br>'.
                  ' Jabatan : '.$key['Jabatan'].'<br>'.
-                 ' Jam Kerja : '.$key['Jam_kerja'].'<hr><br>';
+                 ' Jam Kerja : '.$key['Jam_kerja'].'<br>'.
+                 'Total Gaji Bersih : '.$gajibersih.'<br>'.
+                 'Total gaji : '.$total.'<hr><br>';
         }
     }
 }
