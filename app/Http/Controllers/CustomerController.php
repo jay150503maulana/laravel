@@ -14,7 +14,7 @@ class CustomerController extends Controller
         $customer = Customer::find($id);
         return $customer;
     }
-    public function store($code_customer,$name,$email,$country,$city,$address,$contact_number){
+    public function jay($code_customer,$name,$email,$country,$city,$address,$contact_number){
             $customer = new Customer();
             $customer -> code_customer = $code_customer;
             $customer -> name = $name;

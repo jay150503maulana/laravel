@@ -232,6 +232,10 @@ Route::get('tabungan-hapus/{id}','TabunganController@hapus');
 //Customer
 Route::get('customer','CustomerController@index');
 Route::get('customer/{id}','CustomerController@show');
-Route::get('customer-tambah/{code_customer}/{name}/{email}/{country}/{city}/{address}/{contact_number},CustomerController@store');
-Route::get('customer-edit/{id}/{code_customer}/{name}/{email}/{country}/{city}/{address}/{contact_number},CustomerController@update');
+Route::get('customer-tambah/{code_customer}/{name}/{email}/{country}/{city}/{address}/{contact_number}','CustomerController@jay');
+Route::get('customer-edit/{id}/{code_customer}/{name}/{email}/{country}/{city}/{address}/{contact_number}','CustomerController@update');
 Route::get('customer-hapus/{id}','CustomerController@hapus');
+//passing Data
+Route::get('pass','PracticeController@pass');
+Route::get('pass1','PracticeController@pass1');
+Route::get('pass-tabungan','PracticeController@pass2');
