@@ -239,3 +239,7 @@ Route::get('customer-hapus/{id}','CustomerController@hapus');
 Route::get('pass','PracticeController@pass');
 Route::get('pass1','PracticeController@pass1');
 Route::get('pass-tabungan','PracticeController@pass2');
+Route::get('pass-tabungan2/{id}','PracticeController@pass3');
+//Biodata
+Route::get('bio','BiodataController@index');
+Route::get('bio-find/{id}','BiodataController@pass');

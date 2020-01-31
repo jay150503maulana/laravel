@@ -9,12 +9,19 @@
 <body>
     <center>Daftar Tabungan</center>
     @foreach($tabungan as $data)
+    <?php if($data -> jml >= 25000){
+        $tabungan = " B";
+    }elseif($data -> jml >=5000){
+        $tabungan = " A";
+    }else{
+        $tabungan = "";} ?>
     <b>Nis : {{$data -> nis}}<br>
     Nama : {{ $data -> nama}}<br>
     kelas : {{$data -> kelas}}<br>
-    Jumlah : {{$data -> jml}}<br></b>
+    Jumlah : {{$data -> jml}}<br>
+    Paket Tabungan anda : <?php echo  $tabungan ?></b>
     <hr>
-    @endforeach
+        @endforeach
 
 </body>
 </html>

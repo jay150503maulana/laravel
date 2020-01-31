@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class data extends Seeder
+class BiodataSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -25,6 +25,6 @@ class data extends Seeder
         ];
         //
          // masukkan data ke database
-         DB::table('data')->insert($bio);
+         DB::table('bio')->insert($bio);
     }
 }
